@@ -1,6 +1,6 @@
 import React from 'react';
-import TransactionList from './TransactionList';
 import './App.css';
+import TransactionList from './components/TransactionList';
 
 const App = () => {
   return (
