@@ -12,5 +12,18 @@ ul {
   
   li {
     margin-bottom: 0.5rem;
+    background: #e0feff;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    padding:10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+  }
+  li:hover{
+    opacity:0.8;
   }
   
