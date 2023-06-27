@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TransactionForm from './TransactionForm';
 import Transaction from './Transaction';
+import './TransactionList.css';
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
