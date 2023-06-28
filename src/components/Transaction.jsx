@@ -7,7 +7,7 @@ const Transaction = ({ transaction, deleteTransaction }) => {
   return (
     <li>
       <span>{name} <br/></span>
-      <span>({amount})<br/></span>
+      <span>{amount}<br/></span>
       <span>{date}<br/></span> 
       <button onClick={() => deleteTransaction(id)}>Delete</button>
     </li>
