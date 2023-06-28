@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
-// import './TransactionForm';
 
-const TransactionForm = ({ addTransaction }) => {
+const Form = ({ addTransaction }) => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
 
-  const handleSubmit = e => {
-    e.preventDefault();
 
-    if (name && amount && date) {
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+
+    if (name && amount) {
       const newTransaction = {
         id: Date.now(),
         name,
         amount: Number(amount),
         date,
       };
+      
+      const response = await fetch('http://localhost:4000/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTransaction),
+      });
+
 
       addTransaction(newTransaction);
       setName('');
@@ -49,4 +58,4 @@ const TransactionForm = ({ addTransaction }) => {
   );
 };
 
-export default TransactionForm;
+export default Form;
