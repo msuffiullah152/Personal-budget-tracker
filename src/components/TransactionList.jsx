@@ -1,23 +1,39 @@
-import React, { useState } from 'react';
-import TransactionForm from './TransactionForm';
+import React, { useState, useEffect } from 'react';
 import Transaction from './Transaction';
-import './TransactionList.css';
+import Form from './Form';
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
 
+  useEffect(() => {
+    fetch('http://localhost:3000/transactions')
+      .then(response => response.json())
+      .then(data => setTransactions(data));
+  }, []);
+
   const addTransaction = transaction => {
-    setTransactions([...transactions, transaction]);
+    fetch('http://localhost:3000/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transaction),
+    })
+      .then(response => response.json())
+      .then(data => setTransactions([...transactions, data]));
   };
 
   const deleteTransaction = id => {
-    setTransactions(transactions.filter(transaction => transaction.id !== id));
+    fetch(`http://localhost:3000/transactions/${id}`, {
+      method: 'DELETE',
+    })
+      .then(() => setTransactions(transactions.filter(transaction => transaction.id !== id)));
   };
 
   return (
     <div>
       <h2>Transaction List</h2>
-      <TransactionForm addTransaction={addTransaction} />
+      <Form addTransaction={addTransaction} />
       <ul>
         {transactions.map(transaction => (
           <Transaction
