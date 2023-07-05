@@ -24,24 +24,6 @@ const [transactions, setTransactions] = useState([]);
       ignore = true;
     }
   }, []);
-useEffect(() => {
-    let ignore = false;
-
-    async function fetchTransactions() {
-      const response = await fetch('http://localhost:4000/transactions');
-      const transactions = await response.json();
-      if(!ignore) {
-        setTransactions(transactions);
-      }
-      return transactions;
-    }
-
-    fetchTransactions();
-
-    return () => {
-      ignore = true;
-    }
-  }, []);
 
 const App = () => {
   return (

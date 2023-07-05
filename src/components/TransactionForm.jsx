@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 
-const Form = ({ addTransaction }) => {
+const TransactionForm = ({ addTransaction }) => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
 
-
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (name && amount) {
@@ -16,7 +15,6 @@ const Form = ({ addTransaction }) => {
         amount: Number(amount),
         date,
       };
-      
       const response = await fetch('http://localhost:4000/transactions', {
         method: 'POST',
         headers: {
@@ -25,8 +23,9 @@ const Form = ({ addTransaction }) => {
         body: JSON.stringify(newTransaction),
       });
 
-
+      // Add the new transaction using the addTransaction function
       addTransaction(newTransaction);
+
       setName('');
       setAmount('');
       setDate('');
@@ -39,23 +38,23 @@ const Form = ({ addTransaction }) => {
         type="text"
         placeholder="Transaction Name"
         value={name}
-        onChange={e => setName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
       />
       <input
         type="number"
         placeholder="Transaction Amount"
         value={amount}
-        onChange={e => setAmount(e.target.value)}
+        onChange={(e) => setAmount(e.target.value)}
       />
       <input
         type="date"
         placeholder="Transaction Date"
         value={date}
-        onChange={e => setDate(e.target.value)}
+        onChange={(e) => setDate(e.target.value)}
       />
       <button type="submit">Add Transaction</button>
     </form>
   );
 };
 
-export default Form;
+export default TransactionForm;

@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TransactionForm from './TransactionForm';
 import Transaction from './Transaction';
 import './TransactionList.css';
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
-  const addTransaction = transaction => {
+
+  useEffect(() => {
+    async function fetchTransactions() {
+      const response = await fetch('http://localhost:4000/transactions');
+      const transactions = await response.json();
+      setTransactions(transactions);
+    }
+
+    fetchTransactions();
+  }, []);
+
+  const addTransaction = (transaction) => {
     setTransactions([...transactions, transaction]);
   };
-  const deleteTransaction = async(index) => {
-    const transactionToDelete = transactions[index];
-    setTransactions(transactions.filter(transaction => transaction.id !== index));
-    const response = await fetch(`http://localhost:4000/transactions/${transactionToDelete.id}`, {
-        method: "DELETE",
-      });
-  };
+
+  async function deleteTransaction(transactionId) {
+    await fetch(`http://localhost:4000/transactions/${transactionId}`, {
+      method: 'DELETE'
+    });
+
+    setTransactions(prevTransactions =>
+      prevTransactions.filter(transaction => transaction.id !== transactionId)
+    );
+  }
+
   return (
     <div>
       <h2>Transaction List</h2>
@@ -31,4 +46,5 @@ const TransactionList = () => {
     </div>
   );
 };
+
 export default TransactionList;

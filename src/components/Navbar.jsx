@@ -3,7 +3,7 @@ const Navbar = ()=>{
     return(
         <nav>
             <ul>
-                <li>
+                <li className="Transactions">
                     <Link to = "TransactionList">
                         Transactions
                     </Link>
