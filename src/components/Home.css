@@ -1,0 +1,43 @@
+/* *{
+    background: linear-gradient(to right, #ffffff, #00d9ff);
+
+} */
+
+h1{
+    
+    margin-bottom: 0.5rem;
+    background: #e0feff;
+    font-weight: bolder;
+    padding:10px 20px;
+    border-radius: 10px;
+    opacity: 1;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    text-align: center;    font-size: 3rem;
+    font-family: 'YourFont', sans-serif; /* Replace 'YourFont' with the desired font */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background: linear-gradient(to right, #ffffff, #00d9ff);
+
+
+}
+h2{
+    margin-bottom: 0.5rem;
+    font-weight: bolder;
+    padding:10px 20px;
+    border-radius: 10px;
+    opacity: 1;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    text-align: center;    font-size: 3rem;
+    font-family: 'YourFont', sans-serif; /* Replace 'YourFont' with the desired font */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background: transparent;
+}

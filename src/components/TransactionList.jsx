@@ -28,7 +28,8 @@ const TransactionList = () => {
     setTransactions(prevTransactions =>
       prevTransactions.filter(transaction => transaction.id !== transactionId)
     );
-  }
+  };
+  
 
   return (
     <div>

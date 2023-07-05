@@ -1,3 +1,13 @@
+*{
+    /* background-image: url(https://www.johnhancock.com/content/dam/onejohnhancock/articles/3-budgeting-rules-to-help-you-save-money/BudgetingRules_50_30_20.gif); */
+    /* background-size: 100%; */
+    background-color: ;
+
+}
+li{
+    background: linear-gradient(to right, #ffffff, #00d9ff);
+
+}
 .Transactions {
     margin-bottom: 0.5rem;
     background: #e0feff;
@@ -14,7 +24,7 @@
   }
   .Transactions:hover{
     opacity:1;
-    background-color: aqua;
+    background-color: rgb(0, 249, 249);
     
   }
   
